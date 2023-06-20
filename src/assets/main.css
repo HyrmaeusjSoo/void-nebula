@@ -1,0 +1,20 @@
+
+body {
+    background: #2d2d2d;
+}
+
+.prt-con{
+    height: calc(100vh - 5px);
+    border-radius: 10px;
+    border: 1px solid #97989ae4;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 2.5%;
+    width: 100%;
+}
+
+.top-con{
+    padding-top: 15px;
+}
