@@ -10,7 +10,7 @@
 └───────────────────────────────────────────────────────────────────────────────────────────┘
 */
 
-export const hostname = '192.168.0.87';
+export const hostname = '127.0.0.1';
 export const host = `http://${hostname}:5555/api/v1/`;
 export const request = async (url, method='GET', data=null, contentType='application/json;charset=utf-8') => {
     let res;

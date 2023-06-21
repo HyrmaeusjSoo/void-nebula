@@ -6,8 +6,6 @@
 
 <div align=center>
     <img src="https://img.shields.io/badge/Vue-3.3.4-green"/>
-    <img src="https://img.shields.io/badge/vite-4.3.9-green"/>
-    <img src="https://img.shields.io/badge/vue--router-4.2.2-green"/>
     <img src="https://img.shields.io/badge/vant-4.5.0-blue"/>
 </div>
 

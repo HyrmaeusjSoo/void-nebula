@@ -5,18 +5,15 @@
         </van-cell-group>
     </div>
     <div class="fixed-bottom">
-        <van-space direction="vertical" fill>
-            <form>
-                <van-cell-group inset v-show="!signed">
-                    <van-field v-model="account" label="账号" autocomplete="off" placeholder="请输入账号" />
-                    <van-field v-model="password" type="password" label="密码" autocomplete="off" placeholder="请输入密码" />
-                </van-cell-group>
+        <van-cell-group inset>
+            <form v-show="!signed">
+                <van-field v-model="account" label="账号" autocomplete="off" placeholder="请输入账号" />
+                <van-field v-model="password" type="password" label="密码" autocomplete="off" placeholder="请输入密码" />
             </form>
-            <van-cell-group inset>
-                <van-button type="default" @click="login" v-show="!signed" color="linear-gradient(to right, #14EE5C, #131AE5)" block>登录</van-button>
-                <van-button type="default" :disabled="!signed" color="linear-gradient(to right, #08F5D5, #E915B8)" to="/friends" block>chat</van-button>
-            </van-cell-group>
-        </van-space>
+            <van-button type="default" @click="login" v-show="!signed" color="linear-gradient(to right, #14EE5C, #131AE5)" block>登录</van-button>
+            <van-button type="default" :disabled="!signed" color="linear-gradient(to right, #08F5D5, #E915B8)" to="/friends" block>chat</van-button>
+            <van-button type="default" :disabled="!signed" color="linear-gradient(to right, #f1f2b5 0%, #bbc1bf 19%, #eea2a2 42%, #b49fda 79%, #18545a 100%)" to="/astro" block>astro</van-button>
+        </van-cell-group>
     </div>
 </template>
 

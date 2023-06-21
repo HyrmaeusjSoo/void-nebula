@@ -11,11 +11,14 @@ const router = createRouter({
         path: '/friends',
         name: 'friends',
         component: _ => import('../views/FriendsView.vue')
-    },
-    {
+    },{
         path: '/chat/:id',
         name: 'chat',
         component: _ => import('../views/ChatView.vue')
+    },{
+        path: '/astro',
+        name: 'astro',
+        component: _ => import('../views/AstroView.vue')
     }
   ]
 })

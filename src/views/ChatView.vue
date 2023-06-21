@@ -2,7 +2,7 @@
     <div class="chat_commento">
         <div class="chat_top"><a href="/friends">&lt;&nbsp;&nbsp;&nbsp;&nbsp;</a>{{targetName}}</div>
         <div class="line"></div>
-        <div class="chat_middle" id="haa" ref="chatHistory">
+        <div class="chat_middle" ref="chatHistory">
             <div v-for="v in messageShow" :key="v.id" :class="v.cls_chat">
                 <div :class="v.cls_item1">{{v.cls_name}}</div>
                 <div :class="v.cls_item2">
@@ -17,7 +17,7 @@
     <div class="fixed-bottom" id="chat-input">
         <van-cell-group inset>
             <van-field v-model="message" rows="5" type="textarea" maxlength="512" placeholder="(●'◡'●)" />
-            <van-button @click="sendMessage" type="default" color="linear-gradient(to right, #08F5D5, #E915B8)" block>send</van-button>
+            <van-button @click="sendMessage" :disabled="!message" type="default" color="linear-gradient(to right, #08F5D5, #E915B8)" block>send</van-button>
         </van-cell-group>
     </div>
 </template>
@@ -28,13 +28,11 @@
     import { hostname, request } from "../utils/request";
     import '../assets/chat.css';
 
-    // 模板调整
     const chatHistory = ref(null);
-    const isScroll = ref(false);
     onMounted( _ => {
         // 设定记录自动高度
-        let height = document.getElementById('chat-input').clientHeight / (document.body.clientHeight-100) * 100;
-        chatHistory.value.style.height = (100 - height)+'%';
+        let height = (document.getElementById('chat-input').clientHeight + document.getElementsByClassName('chat_top')[0].clientHeight) / document.getElementById('app').clientHeight * 100;
+        chatHistory.value.style.height = `${99 - height}%`;
     });
     
 
@@ -87,6 +85,9 @@
 
     // 发送内容
     let sendMessage = _ => {
+        if (!message.value) {
+            return false;
+        }
         let date = new Date();
         let content = {
             from_id: parseInt(localStorage.getItem('userId')),
