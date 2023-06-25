@@ -25,16 +25,14 @@
     const password = ref('');
 
     let signed = ref(localStorage.getItem('token') && Date.now() < localStorage.getItem('expireTime'));
-    const login = _ => {
-        request('user/login', 'POST', {account: account.value, password: password.value}).then(r => 
-            (r.data && r.data.userId && r.data.token && r.data.expireTime && (
-                localStorage.setItem('userId', r.data.userId),
-                localStorage.setItem('token', r.data.token),
-                localStorage.setItem('expireTime', r.data.expireTime),
-                document.cookie = 'userId='+r.data.userId,
-                document.cookie = 'token='+r.data.token,
-                signed.value = true,
-                true
-            )) || (r.message && alert(r.message), true) || alert('登录失败'));
-    }
+    const login = _ => request('user/login', 'POST', {account: account.value, password: password.value}).then(r => 
+        (r.data && r.data.userId && r.data.token && r.data.expireTime && (
+            localStorage.setItem('userId', r.data.userId),
+            localStorage.setItem('token', r.data.token),
+            localStorage.setItem('expireTime', r.data.expireTime),
+            document.cookie = 'userId='+r.data.userId,
+            document.cookie = 'token='+r.data.token,
+            signed.value = true,
+            true
+        )) || (r.message && alert(r.message), true) || alert('登录失败'));
 </script>

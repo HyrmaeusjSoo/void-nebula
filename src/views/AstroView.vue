@@ -37,12 +37,8 @@
         ad.value.style.height = `${93 - height}%`;
     });
 
-    const name = ref('暗物质');
+    const name = ref('');
     const astro = ref([]);
 
-    const onLoad = () => {
-        request(`astro/${name.value}`, 'GET').then(r => {
-            astro.value = r.data.AstroDict;
-        });
-    };
+    const onLoad = () => request(`astro/${name.value}`, 'GET').then(r => (r.data && (astro.value = r.data.AstroDict,true)) || (r.message && alert(r.message), true) || alert('登录失败'));
 </script>
